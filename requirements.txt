@@ -1,3 +1,5 @@
 flask
 scipy
 scikit-learn
+numpy
+pandas 
