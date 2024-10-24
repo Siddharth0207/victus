@@ -5,7 +5,7 @@ import logging
 
 logging.basicConfig(level=logging.INFO)
 
-
+# {1} Creating file and subfiles below
 project_name = 'myproject'
 list_of_files = [
     ".github/workflows/.gitkeep",
@@ -27,7 +27,7 @@ list_of_files = [
     "requirements.txt",
     "setup.py" 
 ]
-# Writing the below code in order to avoid the situation when you have already made file with name 
+# {2}Writing the below code in order to avoid the situation when you have already made file with name 
 for filepath in list_of_files:
     filepath = Path(filepath)
     filedir , filename = os.path.split(filepath)
