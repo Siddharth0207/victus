@@ -3,4 +3,7 @@ scipy
 scikit-learn
 numpy
 pandas 
+pymysql
+python-dotenv
+mysql-connector-python
 -e .
