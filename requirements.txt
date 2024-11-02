@@ -6,4 +6,6 @@ pandas
 pymysql
 python-dotenv
 mysql-connector-python
+matplotlib 
+seaborn
 -e .
