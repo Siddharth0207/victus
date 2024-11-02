@@ -8,4 +8,4 @@ python-dotenv
 mysql-connector-python
 matplotlib 
 seaborn
--e .
+#-e .
