@@ -24,7 +24,7 @@ id,age,bp,sg,al,su,rbc,pc,pcc,ba,bgr,bu,sc,sod,pot,hemo,pcv,wc,rc,htn,dm,cad,app
 241,57.0,70.0,1.015,1.0,0.0,,abnormal,notpresent,notpresent,165.0,45.0,1.5,140.0,3.3,10.4,31,4200,3.9,no,no,no,good,no,no,ckd
 133,70.0,100.0,1.015,4.0,0.0,normal,normal,notpresent,notpresent,118.0,125.0,5.3,136.0,4.9,12.0,37,8400,8.0,yes,no,no,good,no,no,ckd
 317,58.0,70.0,1.02,0.0,0.0,normal,normal,notpresent,notpresent,102.0,48.0,1.2,139.0,4.3,15.0,40,8100,4.9,no,no,no,good,no,no,notckd
-87,70.0,100.0,1.005,1.0,0.0,normal,abnormal,present,notpresent,169.0,47.0,2.9,,,11.1,32,5800,5,yes,yes,no,poor,no,no,ckd
+87,70.0,100.0,1.005,1.0,0.0,normal,abnormal,present,notpresent,169.0,47.0,2.9,,,11.1,32,5800,5.0,yes,yes,no,poor,no,no,ckd
 105,65.0,80.0,1.015,0.0,0.0,,normal,notpresent,notpresent,115.0,32.0,11.5,139.0,4.0,14.1,42,6800,5.2,no,no,no,good,no,no,ckd
 14,68.0,80.0,1.01,3.0,2.0,normal,abnormal,present,present,157.0,90.0,4.1,130.0,6.4,5.6,16,11000,2.6,yes,yes,yes,poor,yes,no,ckd
 49,60.0,70.0,1.01,2.0,0.0,normal,abnormal,present,notpresent,144.0,72.0,3.0,,,9.7,29,21600,3.5,yes,yes,no,poor,no,yes,ckd
@@ -35,7 +35,7 @@ id,age,bp,sg,al,su,rbc,pc,pcc,ba,bgr,bu,sc,sod,pot,hemo,pcv,wc,rc,htn,dm,cad,app
 297,53.0,60.0,1.025,0.0,0.0,normal,normal,notpresent,notpresent,116.0,26.0,1.0,146.0,4.9,15.8,45,7700,5.2,,,,good,no,no,notckd
 42,47.0,100.0,1.01,0.0,0.0,,normal,notpresent,notpresent,204.0,29.0,1.0,139.0,4.2,9.7,33,9200,4.5,yes,no,no,good,no,yes,ckd
 235,45.0,70.0,1.01,2.0,0.0,,normal,notpresent,notpresent,113.0,93.0,2.3,,,7.9,26,5700,,no,no,yes,good,no,yes,ckd
-26,75.0,80.0,1.015,0.0,0.0,,normal,notpresent,notpresent,156.0,45.0,2.4,140.0,3.4,11.6,35,10300,4,yes,yes,no,poor,no,no,ckd
+26,75.0,80.0,1.015,0.0,0.0,,normal,notpresent,notpresent,156.0,45.0,2.4,140.0,3.4,11.6,35,10300,4.0,yes,yes,no,poor,no,no,ckd
 343,37.0,60.0,1.025,0.0,0.0,normal,normal,notpresent,notpresent,111.0,35.0,0.8,135.0,4.1,16.2,50,5500,5.7,no,no,no,good,no,no,notckd
 313,55.0,80.0,1.02,0.0,0.0,normal,normal,notpresent,notpresent,104.0,28.0,0.9,142.0,4.8,17.3,52,8200,4.8,no,no,no,good,no,no,notckd
 296,41.0,70.0,1.02,0.0,0.0,normal,normal,notpresent,notpresent,125.0,38.0,0.6,140.0,5.0,16.8,41,6300,5.9,no,no,no,good,no,no,notckd

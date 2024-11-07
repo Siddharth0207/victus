@@ -4,8 +4,8 @@ from dataclasses import dataclass
 
 import numpy as np 
 import pandas as pd
-from sklearn.preprocessing import StandardScaler , LabelEncoder
-from sklearn.preprocessing import ColumnTransformer
+from sklearn.preprocessing import StandardScaler , OneHotEncoder
+from sklearn.compose import ColumnTransformer
 
 
 from sklearn.impute import SimpleImputer
@@ -23,8 +23,8 @@ class DataTransformationConfig:
     preprocessor_obj_file_path = os.path.join('artifacts', 'preprocessor.pkl')
 
 class DataTransformation:
-    def __init__(self, data_transformation_config: DataTransformationConfig):
-        self.data_transformation_config = data_transformation_config
+    def __init__(self):
+        self.data_transformation_config = DataTransformationConfig()
         
     def get_data_transformer_object(self):
         """
@@ -32,24 +32,24 @@ class DataTransformation:
         
         """
         try:
-            df = read_sql_data()
+           
             logging.info("Data Transformation has been initiated")
             logging.info("Reading from MySQL Database")
-            numeric_features = [feature for feature in df.columns if df[feature].dtype != 'O']
-            categorical_features = [feature for feature in df.columns if df[feature].dtype == 'O']
-            num_pipeline = Pipeline(steps = ("imputer", SimpleImputer(strategy = 'median'),
-                                             ('scalar', StandardScaler())))
+            numeric_features = ['age','bp','bgr','bu','hemo']
+            categorical_features = ['htn']
+            num_pipeline = Pipeline(steps = [("imputer", SimpleImputer(strategy = 'median')),
+                                             ('scalar', StandardScaler())
+                                             ])
             cat_pipeline = Pipeline(steps=[
                 ("imputer", SimpleImputer(strategy = 'most_frequent')),
-                ('Label Encoder', LabelEncoder()),
-                ("Scaler", StandardScaler())
+                ('OneHot Encoder', OneHotEncoder(handle_unknown='ignore'))
             ])
 
             logging.info(f"Numeric Features: {numeric_features}")
             logging.info(f"Categorical Features: {categorical_features}")
 
             preprocessor = ColumnTransformer([
-                ('Nmerical Pipeline', num_pipeline, numeric_features),
+                ('Numerical Pipeline', num_pipeline, numeric_features),
                 ('Categorical Pipeline', cat_pipeline, categorical_features)
             ])
             return preprocessor
