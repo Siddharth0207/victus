@@ -8,6 +8,11 @@ from dotenv import load_dotenv
 import pymysql
 
 
+import pickle
+import numpy as np 
+import pandas as pd
+
+
 #Loading the Data from .env file inorder to use the same credentials  in all the files
 logging.info("Loading the Data from .env file")
 load_dotenv()
@@ -39,3 +44,16 @@ def read_sql_data():
     except Exception as e:
         raise CustomException(e,sys)
 
+def save_object(file_path, obj):
+    """
+    This function is responsible for saving the object as a pickle file
+    """
+    try:
+        dir_path = os.path.dirname(file_path)
+
+        os.makedirs(dir_path, exist_ok=True)
+        with open(file_path, 'wb') as file_obj:
+            pickle.dump(obj, file_obj)
+        logging.info(f"Object has been saved at {file_path}")
+    except Exception as e:
+        raise CustomException(e,sys)
