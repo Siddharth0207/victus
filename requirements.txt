@@ -8,4 +8,6 @@ python-dotenv
 mysql-connector-python
 matplotlib 
 seaborn
+catboost
+xgboost
 #-e .

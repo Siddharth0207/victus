@@ -4,7 +4,7 @@ from dataclasses import dataclass
 
 import numpy as np 
 import pandas as pd
-from sklearn.preprocessing import StandardScaler , OneHotEncoder
+from sklearn.preprocessing import StandardScaler , OneHotEncoder , LabelEncoder
 from sklearn.compose import ColumnTransformer
 
 
@@ -36,13 +36,13 @@ class DataTransformation:
             logging.info("Data Transformation has been initiated")
             logging.info("Reading from MySQL Database")
             numeric_features = ['age','bp','bgr','bu','hemo']
-            categorical_features = ['htn']
+            categorical_features = ['htn','classification']
             num_pipeline = Pipeline(steps = [("imputer", SimpleImputer(strategy = 'median')),
                                              ('scalar', StandardScaler())
                                              ])
             cat_pipeline = Pipeline(steps=[
                 ("imputer", SimpleImputer(strategy = 'most_frequent')),
-                ('OneHot Encoder', OneHotEncoder(handle_unknown='ignore'))
+                ('OneHot Encoder', OneHotEncoder(handle_unknown = 'ignore'))
             ])
 
             logging.info(f"Numeric Features: {numeric_features}")
@@ -73,21 +73,25 @@ class DataTransformation:
             preprocessor_obj = self.get_data_transformer_object()
 
             target_column_name = 'classification' 
-            numeric_features = [feature for feature in train_data.columns if train_data[feature].dtype != 'O']
+            #numeric_features = [feature for feature in train_data.columns if train_data[feature].dtype != 'O']
 
-            input_features_train_df = train_data.drop(columns = [target_column_name],axis = 1)
+            input_features_train_df = train_data
             target_feature_train_df = train_data[target_column_name] 
 
-            input_feature_test_df = test_data.drop(columns = [target_column_name],axis = 1)
+            input_feature_test_df = test_data
             target_feature_test_df = test_data[target_column_name]
             logging.info("Applying Preprocessing on Train Data and Test Data")
+             # Encode the target variable
+            label_encoder = LabelEncoder()
+            target_feature_train_encoded = label_encoder.fit_transform(target_feature_train_df)
+            target_feature_test_encoded = label_encoder.transform(target_feature_test_df)
 
             input_feature_train_arr = preprocessor_obj.fit_transform(input_features_train_df)
             input_feature_test_arr = preprocessor_obj.transform(input_feature_test_df)
 
 
-            train_arr = np.c_[input_feature_train_arr, np.array(target_feature_train_df)]
-            test_arr = np.c_[input_feature_test_arr, np.array(target_feature_test_df)]
+            train_arr = np.c_[input_feature_train_arr, target_feature_train_encoded]
+            test_arr = np.c_[input_feature_test_arr, target_feature_test_encoded]
 
 
 
